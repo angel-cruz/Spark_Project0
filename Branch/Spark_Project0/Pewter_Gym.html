@@ -9,42 +9,43 @@
 </head>
 <body>
 
-    <h1 class="title">Pewter Gym Battle<h4 class="title">By: Angel Cruz</h4></h1>
+    <h1 class="title">Pokemon VS Mode<h4 class="title">By: Angel Cruz</h4></h1>
     
     <!--list of Pokemon-->
     <div class="pokemon-list" id="listPokemon">
-        <div class="pokemon" id="pokemon-1" >
+        <div class="pokemon" id="pokemon-1">
+            <p></p>   <h3></h3> 
             <img src="" alt="">
-            <p></p>
-            <div class="display-atk-1"></div>
         </div>
-        <div class="vs">VS</div>
+        <div class="vs">VS.</div>
         <div class="pokemon" id="pokemon-2">
-                <img src="" alt="">
-                <p></p>
-                <div class="display-atk-2"></div>
+            <p></p>    <h3></h3>
+            <img src="" alt="">
             </div>
     </div>
     <script>
         let list = document.getElementById("listPokemon")
         //create dynamic id to generate different poke monsters
     function consultPokemon(id, num) {
+        //fetch is a promise in javascript uotcome could be good .then() or bad .catch()
         fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
         .then(function (response){
-            response.json()
+            response.json()//convert response to pokemon
             .then(function(pokemon){
                 createPokemon(pokemon, num)
             })
         })
     }
 
-        //create a diff function which calls multiple sets of data
+        //function to fetch multiple random pokemon based on id#
         function consultPokemons() {
-            let primeId = Math.round(Math.random() * 150)
+            let primeId = Math.round(Math.random() * 150) //random round number
             let secondId = Math.round(Math.random() * 150)
+            let thirdId = Math.round(Math.random()* 150)
 
             consultPokemon(primeId, 1)
             consultPokemon(secondId, 2)
+            consultPokemon(thirdId, 3)
         }
         
     function createPokemon(pokemon, num) {
@@ -56,6 +57,8 @@
         let name  = item.getElementsByTagName("p")[0] 
         name.textContent = pokemon.name
         
+         let healthPoints = item.getElementByTagName("h3")[0]
+         healthPoints.textContent = pokemon.moves[1].move.name
     }
     consultPokemons();
     </script>

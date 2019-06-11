@@ -1,5 +1,5 @@
-# Spark_Project0
-## Proejct Name: PokeMon Gym Battle
+#Spark_Project0
+##Project Name: PokeMon Gym Battle
 ##Project author: Housely & Angel
 
 
